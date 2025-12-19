@@ -3,9 +3,6 @@ using UnityEngine.AI;
 
 public class Chasing : IState
 {
-    private NavMeshAgent agent;
-
-    private Transform target;
     private GuardFSM guard;
 
     private float lostSightTimer;
@@ -18,7 +15,7 @@ public class Chasing : IState
 
     public void Enter()
     {
-        agent.speed = 5f;
+        guard.agent.speed = 5f;
 
         lostSightTimer = 0f;
     }

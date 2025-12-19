@@ -1474,15 +1474,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604e7147a2110bf429f701a09b7f72b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardFSM
+  player: {fileID: 948260209}
+  agent: {fileID: 0}
+  waypoints:
+  - {fileID: 677682032}
+  - {fileID: 2066934024}
+  - {fileID: 47183}
   radius: 5
   angle: 90
-  player: {fileID: 948260204}
   targetMask:
     serializedVersion: 2
     m_Bits: 64
   obstruction:
     serializedVersion: 2
     m_Bits: 512
+  lastKnownPosition: {x: 0, y: 0, z: 0}
+  canSeePlayer: 0
 --- !u!1 &1755987736
 GameObject:
   m_ObjectHideFlags: 0
