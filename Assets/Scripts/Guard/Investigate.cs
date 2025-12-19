@@ -11,7 +11,7 @@ public class Investigate : IState
 
     public void Enter()
     {
-        guard.investigateTree.enabled = true;
+        //guard.investigateTree.enabled = true;
         guard.agent.SetDestination(guard.lastKnownPosition);
     }
 
@@ -25,6 +25,6 @@ public class Investigate : IState
 
     public void Exit()
     {
-        guard.investigateTree.enabled = false;
+        //guard.investigateTree.enabled = false;
     }
 }

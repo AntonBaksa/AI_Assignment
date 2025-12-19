@@ -9,6 +9,8 @@ public class GuardFSM : MonoBehaviour
 
     private IState currentState;
 
+    public Transform[] waypoints;
+
     public Patrol patrol;
     public Chasing chase;
     public Investigate investigate;

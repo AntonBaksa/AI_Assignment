@@ -3,8 +3,7 @@ using UnityEngine.AI;
 
 public class Patrol : IState
 {
-    public Transform[] waypoints;
-    public float waypointTolerence = 0.5f;
+    private float waypointTolerence = 0.5f;
 
     int currentIndex = 0;
 
@@ -18,9 +17,9 @@ public class Patrol : IState
     public void Enter()
     {
         guard.agent.speed = 3f;
-        if (waypoints.Length > 0)
+        if (guard.waypoints.Length > 0)
         {
-            guard.agent.SetDestination(waypoints[currentIndex].position);
+            guard.agent.SetDestination(guard.waypoints[currentIndex].position);
         }
     }
 
@@ -32,15 +31,15 @@ public class Patrol : IState
                 return;
         }
 
-        if (waypoints.Length == 0)
+        if (guard.waypoints.Length == 0)
         {
             return;
         }
 
         if (!guard.agent.pathPending && guard.agent.remainingDistance <= waypointTolerence)
         {
-            currentIndex = (currentIndex + 1) % waypoints.Length;
-            guard.agent.SetDestination(waypoints[currentIndex].position);
+            currentIndex = (currentIndex + 1) % guard.waypoints.Length;
+            guard.agent.SetDestination(guard.waypoints[currentIndex].position);
         }
     }
 

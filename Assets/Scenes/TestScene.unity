@@ -1337,8 +1337,6 @@ GameObject:
   - component: {fileID: 1731859142}
   - component: {fileID: 1731859141}
   - component: {fileID: 1731859148}
-  - component: {fileID: 1731859147}
-  - component: {fileID: 1731859146}
   m_Layer: 7
   m_Name: Guard
   m_TagString: Guard
@@ -1464,35 +1462,6 @@ Transform:
   - {fileID: 1073132326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1731859146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731859140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f2965a16ab700e42abf1e5fd4bb99fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Chasing
---- !u!114 &1731859147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731859140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b4c8238d3b895d43b7c644e990696b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Patrol
-  waypoints:
-  - {fileID: 677682032}
-  - {fileID: 2066934024}
-  - {fileID: 47183}
-  waypointTolerence: 0.5
 --- !u!114 &1731859148
 MonoBehaviour:
   m_ObjectHideFlags: 0
