@@ -1,42 +1,51 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Patrol : MonoBehaviour
+public class Patrol : IState
 {
-    GuardFSM fsm;
-
     public Transform[] waypoints;
     public float waypointTolerence = 0.5f;
 
     int currentIndex = 0;
-    private NavMeshAgent agent;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private GuardFSM guard;
+
+    public Patrol(GuardFSM guard)
     {
+        this.guard = guard;
+    }
+
+    public void Enter()
+    {
+        guard.agent.speed = 3f;
         if (waypoints.Length > 0)
         {
-            agent.SetDestination(waypoints[currentIndex].position);
+            guard.agent.SetDestination(waypoints[currentIndex].position);
         }
     }
 
-   /* public PatrolState(GuardFSM fsm)
+    public void Tick()
     {
-        this.fsm = fsm;
-    }*/
+        if (guard.canSeePlayer)
+        {
+            guard.ChangeState(guard.chase);
+                return;
+        }
 
-    public void Patrolling()
-    {
         if (waypoints.Length == 0)
         {
             return;
         }
 
-
-        if (!agent.pathPending && agent.remainingDistance <= waypointTolerence)
+        if (!guard.agent.pathPending && guard.agent.remainingDistance <= waypointTolerence)
         {
             currentIndex = (currentIndex + 1) % waypoints.Length;
-            agent.SetDestination(waypoints[currentIndex].position);
+            guard.agent.SetDestination(waypoints[currentIndex].position);
         }
+    }
+
+    public void Exit()
+    {
+
     }
 }
