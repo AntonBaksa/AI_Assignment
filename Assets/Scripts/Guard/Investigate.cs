@@ -19,12 +19,21 @@ public class Investigate : IState
     {
         if (guard.canSeePlayer)
         {
+            //guard.blackboard.SetValue("canSeePlayer", guard.canSeePlayer);
             guard.ChangeState(guard.chase);
+        }
+
+        if (guard.requestChase)
+        {
+            Debug.Log("Request recieved");
+            guard.requestChase = false;
+            guard.ChangeState(guard.chase);
+            return;
         }
     }
 
     public void Exit()
     {
-        //guard.investigateTree.enabled = false;
+       //guard.investigateTree.enabled = false;
     }
 }

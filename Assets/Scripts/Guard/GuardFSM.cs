@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +6,8 @@ public class GuardFSM : MonoBehaviour
 {
     public Transform player;
     public NavMeshAgent agent;
+    public BehaviorGraphAgent behaviorAgent;
+    public Unity.Behavior.Blackboard blackboard;
 
     private IState currentState;
 
@@ -23,11 +25,15 @@ public class GuardFSM : MonoBehaviour
     public Vector3 lastKnownPosition;
 
     public bool canSeePlayer;
+    public bool hasAlertPosition;
+    public bool requestChase;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        behaviorAgent = GetComponent<BehaviorGraphAgent>();
+        //blackboard = behaviorAgent.Blackboard;
 
         patrol = new Patrol(this);
         chase = new Chasing(this);
@@ -45,7 +51,15 @@ public class GuardFSM : MonoBehaviour
     void Update()
     {
         FieldOfView();
+        SyncBlackboard();
         currentState?.Tick();
+    }
+
+    void SyncBlackboard()
+    {
+        /*blackboard.SetValue("canSeePlayer", canSeePlayer);
+        blackboard.SetValue("hasAlertPosition", hasAlertPosition);
+        blackboard.SetValue("alertPosition", lastKnownPosition);*/
     }
 
     public void ChangeState(IState newState)
@@ -84,7 +98,10 @@ public class GuardFSM : MonoBehaviour
                 }
                 lastKnownPosition = target.position;
             }
-            canSeePlayer = false;
+            else
+            {
+                canSeePlayer = false;
+            }
         }
         else if (canSeePlayer)
         {
