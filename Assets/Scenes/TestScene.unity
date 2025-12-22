@@ -1001,8 +1001,8 @@ Transform:
   m_GameObject: {fileID: 939302298}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.13, y: 2.31, z: 3.74}
-  m_LocalScale: {x: 1, y: 3, z: 5}
+  m_LocalPosition: {x: -2.13, y: 2.32, z: 3.74}
+  m_LocalScale: {x: 1, y: 4, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1478,8 +1478,6 @@ MonoBehaviour:
   player: {fileID: 948260209}
   agent: {fileID: 0}
   behaviorAgent: {fileID: 0}
-  blackboard:
-    m_Variables: []
   waypoints:
   - {fileID: 677682032}
   - {fileID: 2066934024}
@@ -1496,9 +1494,6 @@ MonoBehaviour:
   canSeePlayer: 0
   hasAlertPosition: 0
   requestChase: 0
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &1731859149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1514,7 +1509,7 @@ MonoBehaviour:
   m_Graph: {fileID: 7635432044353484061, guid: 0e7b3a05954c8e9438a872342d2a57da, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 9081415679086952914
-  m_OriginalGraph: {fileID: 0}
+  m_OriginalGraph: {fileID: 7635432044353484061, guid: 0e7b3a05954c8e9438a872342d2a57da, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -1660,7 +1655,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0

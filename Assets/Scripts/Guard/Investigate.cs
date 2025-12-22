@@ -19,7 +19,6 @@ public class Investigate : IState
     {
         if (guard.canSeePlayer)
         {
-            //guard.blackboard.SetValue("canSeePlayer", guard.canSeePlayer);
             guard.ChangeState(guard.chase);
         }
 

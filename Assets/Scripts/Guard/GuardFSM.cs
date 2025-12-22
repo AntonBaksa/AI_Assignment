@@ -7,7 +7,6 @@ public class GuardFSM : MonoBehaviour
     public Transform player;
     public NavMeshAgent agent;
     public BehaviorGraphAgent behaviorAgent;
-    public Unity.Behavior.Blackboard blackboard;
 
     private IState currentState;
 
@@ -33,7 +32,6 @@ public class GuardFSM : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         behaviorAgent = GetComponent<BehaviorGraphAgent>();
-        //blackboard = behaviorAgent.Blackboard;
 
         patrol = new Patrol(this);
         chase = new Chasing(this);
@@ -51,15 +49,7 @@ public class GuardFSM : MonoBehaviour
     void Update()
     {
         FieldOfView();
-        SyncBlackboard();
         currentState?.Tick();
-    }
-
-    void SyncBlackboard()
-    {
-        /*blackboard.SetValue("canSeePlayer", canSeePlayer);
-        blackboard.SetValue("hasAlertPosition", hasAlertPosition);
-        blackboard.SetValue("alertPosition", lastKnownPosition);*/
     }
 
     public void ChangeState(IState newState)
