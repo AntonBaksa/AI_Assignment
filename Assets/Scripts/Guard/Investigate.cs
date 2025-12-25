@@ -11,8 +11,8 @@ public class Investigate : IState
 
     public void Enter()
     {
-        //guard.investigateTree.enabled = true;
-        guard.agent.SetDestination(guard.lastKnownPosition);
+        guard.behaviorAgent.enabled = true;
+        guard.behaviorAgent.SetVariableValue("Search", true);
     }
 
     public void Tick()
@@ -33,6 +33,6 @@ public class Investigate : IState
 
     public void Exit()
     {
-       //guard.investigateTree.enabled = false;
+       guard.behaviorAgent.enabled = false;
     }
 }

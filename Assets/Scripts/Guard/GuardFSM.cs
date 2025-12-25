@@ -26,6 +26,7 @@ public class GuardFSM : MonoBehaviour
     public bool canSeePlayer;
     public bool hasAlertPosition;
     public bool requestChase;
+    public bool requestReturnToPatrol;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class GuardFSM : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        behaviorAgent.enabled = false;
         ChangeState(patrol);
     }
 
@@ -50,6 +52,15 @@ public class GuardFSM : MonoBehaviour
     {
         FieldOfView();
         currentState?.Tick();
+
+        if(canSeePlayer == true)
+        {
+            behaviorAgent.SetVariableValue("seesPlayer", true);
+        }
+        else
+        {
+            behaviorAgent.SetVariableValue("seesPlayer", false);
+        }
     }
 
     public void ChangeState(IState newState)
@@ -87,6 +98,7 @@ public class GuardFSM : MonoBehaviour
                     canSeePlayer= false;
                 }
                 lastKnownPosition = target.position;
+                behaviorAgent.SetVariableValue("lastPosition", lastKnownPosition);
             }
             else
             {
