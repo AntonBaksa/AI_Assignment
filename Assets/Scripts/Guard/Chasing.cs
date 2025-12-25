@@ -15,7 +15,7 @@ public class Chasing : IState
 
     public void Enter()
     {
-        guard.agent.speed = 5f;
+        guard.agent.speed = 4f;
 
         lostSightTimer = 0f;
     }

@@ -29,6 +29,15 @@ public class Investigate : IState
             guard.ChangeState(guard.chase);
             return;
         }
+
+        if (guard.requestReturnToPatrol)
+        {
+            Debug.Log("Request recieved");
+            guard.requestReturnToPatrol = false;
+            guard.behaviorAgent.SetVariableValue("Search", false);
+            guard.ChangeState(guard.returnToPatrol);
+            return;
+        }
     }
 
     public void Exit()

@@ -10,21 +10,27 @@ public partial class LookAroundAction : Action
 {
     private Transform self;
     private float degreesPerSec = 70f;
-    private float rotatedAmount = 0f;
+    private float rotatedAmount;
+
     protected override Status OnStart()
     {
+        
         self = GameObject.transform;
+        rotatedAmount = 0;
         return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
+        var guard = GameObject.GetComponent<GuardFSM>();
+
         float rotation = degreesPerSec * Time.deltaTime;
         self.Rotate(Vector3.up * rotation);
         rotatedAmount += rotation;
         
         if(rotatedAmount >= 360)
         {
+            guard.behaviorAgent.SetVariableValue("Search", false);
             return Status.Success;
         }
 

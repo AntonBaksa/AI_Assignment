@@ -15,6 +15,7 @@ public class GuardFSM : MonoBehaviour
     public Patrol patrol;
     public Chasing chase;
     public Investigate investigate;
+    public ReturnToPatrol returnToPatrol;
 
     public float radius;
     public float angle;
@@ -37,6 +38,7 @@ public class GuardFSM : MonoBehaviour
         patrol = new Patrol(this);
         chase = new Chasing(this);
         investigate = new Investigate(this);
+        returnToPatrol = new ReturnToPatrol(this);
 
     }
 
